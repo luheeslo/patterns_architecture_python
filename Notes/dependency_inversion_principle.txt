@@ -1,0 +1,32 @@
+
+The Dependency Inversion Principle
+
+You might be familiar with the dependency inversion principle (DIP) already, because it’s the D in SOLID.[2]
+
+Unfortunately, we can’t illustrate the DIP by using three tiny code listings as we did for encapsulation. However, the whole of [part1] is essentially a worked example of implementing the DIP throughout an application, so you’ll get your fill of concrete examples.
+
+In the meantime, we can talk about DIP’s formal definition:
+
+    High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
+    Abstractions should not depend on details. Instead, details should depend on abstractions.
+
+But what does this mean? Let’s take it bit by bit.
+
+High-level modules are the code that your organization really cares about. Perhaps you work for a pharmaceutical company, and your high-level modules deal with patients and trials. Perhaps you work for a bank, and your high-level modules manage trades and exchanges. The high-level modules of a software system are the functions, classes, and packages that deal with our real-world concepts.
+
+By contrast, low-level modules are the code that your organization doesn’t care about. It’s unlikely that your HR department gets excited about filesystems or network sockets. It’s not often that you discuss SMTP, HTTP, or AMQP with your finance team. For our nontechnical stakeholders, these low-level concepts aren’t interesting or relevant. All they care about is whether the high-level concepts work correctly. If payroll runs on time, your business is unlikely to care whether that’s a cron job or a transient function running on Kubernetes.
+
+Depends on doesn’t mean imports or calls, necessarily, but rather a more general idea that one module knows about or needs another module.
+
+And we’ve mentioned abstractions already: they’re simplified interfaces that encapsulate behavior, in the way that our duckduckgo module encapsulated a search engine’s API.
+
+    All problems in computer science can be solved by adding another level of indirection.
+
+— David Wheeler
+
+So the first part of the DIP says that our business code shouldn’t depend on technical details; instead, both should use abstractions.
+
+Why? Broadly, because we want to be able to change them independently of each other. High-level modules should be easy to change in response to business needs. Low-level modules (details) are often, in practice, harder to change: think about refactoring to change a function name versus defining, testing, and deploying a database migration to change a column name. We don’t want business logic changes to slow down because they are closely coupled to low-level infrastructure details. But, similarly, it is important to be able to change your infrastructure details when you need to (think about sharding a database, for example), without needing to make changes to your business layer. Adding an abstraction between them (the famous extra layer of indirection) allows the two to change (more) independently of each other.
+
+The second part is even more mysterious. "Abstractions should not depend on details" seems clear enough, but "Details should depend on abstractions" is hard to imagine. How can we have an abstraction that doesn’t depend on the details it’s abstracting? By the time we get to [chapter_04_service_layer], we’ll have a concrete example that should make this all a bit clearer.
