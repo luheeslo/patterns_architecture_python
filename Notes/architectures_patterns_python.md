@@ -12,7 +12,7 @@
 the most likely to change, and the place where you deliver the most value to the 
 business. Make it easy to understand and modify.
 
-The domain is a fancy way of saying the problem you’re trying to solve.
+  The domain is a fancy way of saying the problem you’re trying to solve.
 
 - **Distinguish entities from value objects**: A value object is defined by its 
 attributes. It’s usually best implemented as an immutable type. If you chan-
