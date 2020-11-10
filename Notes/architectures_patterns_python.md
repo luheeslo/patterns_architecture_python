@@ -10,7 +10,10 @@
 
 - **Domain modeling**: This is the part of your code that is closest to the business, 
 the most likely to change, and the place where you deliver the most value to the 
-business. Make it easy to understand and modify. 
+business. Make it easy to understand and modify.
+
+The domain is a fancy way of saying the problem you’re trying to solve.
+
 - **Distinguish entities from value objects**: A value object is defined by its 
 attributes. It’s usually best implemented as an immutable type. If you chan-
 ge an attribute on a Value Object, it represents a different object. In con-
